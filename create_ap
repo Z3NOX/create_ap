@@ -1444,8 +1444,9 @@ else
 fi
 
 if [[ "$SHARE_METHOD" != "none" ]] && ! is_interface $INTERNET_IFACE; then
-    echo "ERROR: '${INTERNET_IFACE}' is not an interface" >&2
-    exit 1
+    echo "WARNING: '${INTERNET_IFACE}' is not an interface"
+    echo "         change SHARE_METHOD to 'none'"
+    SHARE_METHOD="none"
 fi
 
 if [[ ${#SSID} -lt 1 || ${#SSID} -gt 32 ]]; then
